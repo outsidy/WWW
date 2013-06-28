@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="삼성물산 테스트" default="copy_stopwordModule" basedir=".">
+	<property name="lib.dir" value="${basedir}/lib" />
+
+	<!--
+		클래스 패스
+	-->
+	
+	<target name="compile">
+		<mkdir dir="${basedir}/bin"/>
+		<javac srcdir="${basedir}/src" destdir="${basedir}/bin" optimize="on" debug="on" failonerror="false" includeantruntime="false" encoding="ms949">
+			<classpath refid="project.class.path"/>
+		</javac>
+	</target>
+	
+	<target name="stopword_filter.jar" depends="compile">
+		<jar jarfile="${basedir}/lib/stopword_filter.jar"
+			basedir="${basedir}/bin"/>
+	</target>	
+	
+	
+	<target name="copy_stopwordModule">
+		<copy todir="D:\01.프로젝트\21.삼성물산\IN2_DISCOVERY_2_0\bin\stopword" >
+	    <fileset file="${basedir}\bin\stopword\*.class"/>
+		</copy>	
+	</target>		
+</project>
